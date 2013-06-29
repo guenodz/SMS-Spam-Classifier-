@@ -16,7 +16,7 @@ public class KnnClassifier {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		/* initialize the Knn Classifier with k = 3 */
+		/** initialize the Knn Classifier with k = 3 */
 		IBk knn = new IBk(3);
 		BaseClassifier classifier = new BaseClassifier();
 		classifier.setClassifier(knn);

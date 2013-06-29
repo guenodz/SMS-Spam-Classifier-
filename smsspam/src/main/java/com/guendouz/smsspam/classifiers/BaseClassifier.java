@@ -25,17 +25,17 @@ import weka.filters.unsupervised.attribute.StringToWordVector;
  */
 public class BaseClassifier {
 
-	/* Instances object to handle the dataset content */
+	/** Instances object to handle the dataset content */
 	private Instances train;
-	/* Instances object to handle the dataset content after using a Filter */
+	/** Instances object to handle the dataset content after using a Filter */
 	private Instances trainFiltered;
-	/* the current classifier */
+	/** the current classifier */
 	private Classifier classifier;
-	/* Evaluation object to evaluate the currrent classifier */
+	/** Evaluation object to evaluate the currrent classifier */
 	private Evaluation evaluation;
-	/* the weka TF*IDF vector generator */
+	/** the weka TF*IDF vector generator */
 	private StringToWordVector wordVector;
-	/* use this to tokenize text as words */
+	/** use this to tokenize text as words */
 	private WordTokenizer tokenizer;
 
 	public Classifier getClassifier() {
@@ -49,14 +49,14 @@ public class BaseClassifier {
 	public BaseClassifier() {
 
 		try {
-			/* loading the arff file content */
+			/** loading the arff file content */
 			train = DatasetUtil.loadArff("dataset/dataset.arff");
-			/* initializing the filter */
+			/** initializing the filter */
 			wordVector = new StringToWordVector();
 			wordVector.setInputFormat(train);
 			tokenizer = new WordTokenizer();
 			wordVector.setTokenizer(tokenizer);
-			/* generating the TF*IDF Vector */
+			/** generating the TF*IDF Vector */
 			trainFiltered = Filter.useFilter(train, wordVector);
 
 		} catch (Exception e) {
@@ -65,10 +65,11 @@ public class BaseClassifier {
 
 	}
 
-	/*
+	/**
 	 * make the Instance weka object from a String
 	 * 
-	 * @param sms the String to be converted
+	 * @param sms
+	 *            the String to be converted
 	 * 
 	 * @return Instance object
 	 */
@@ -82,10 +83,11 @@ public class BaseClassifier {
 
 	}
 
-	/*
+	/**
 	 * classify a new message (ham or spam)
 	 * 
-	 * @param message a text message to be classified
+	 * @param message
+	 *            a text message to be classified
 	 * 
 	 * @return a class label (spam or ham )
 	 */
@@ -102,7 +104,7 @@ public class BaseClassifier {
 
 	}
 
-	/*
+	/**
 	 * train the current classifier with the Training data and print the
 	 * evaluation results to the screen
 	 */
@@ -110,11 +112,11 @@ public class BaseClassifier {
 		if (classifier == null)
 			classifier = new NaiveBayes();
 
-		/* build the classifier */
+		/** build the classifier */
 		classifier.buildClassifier(trainFiltered);
-		/* Initialize the evaluation by the training data (test) */
+		/** Initialize the evaluation by the training data (test) */
 		evaluation = new Evaluation(trainFiltered);
-		/* evaluate the current classifier */
+		/** evaluate the current classifier */
 		evaluation.evaluateModel(classifier, trainFiltered);
 		System.out.println(evaluation.toSummaryString());
 

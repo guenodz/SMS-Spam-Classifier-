@@ -17,7 +17,7 @@ public class Main {
 	 */
 	public static void main(String[] args) throws Exception {
 
-		/*
+		/**
 		 * initialize the base classifier with the default classifier ( Naive
 		 * Bayes)
 		 */
