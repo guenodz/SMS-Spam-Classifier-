@@ -1,6 +1,6 @@
 @relation smsspam
 @attribute Message string
-@attribute Classe {spam,ham}
+@attribute Class {spam,ham}
 @data
 'Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005. Text FA to 87121 to receive entry question(std txt rate)T&Cs apply 08452810075over18s',spam
 'FreeMsg Hey there darling its been 3 weeks now and no word back! Id like some fun you up for it still? Tb ok! XxX std chgs to send, £1.50 to rcv',spam
